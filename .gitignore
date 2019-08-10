@@ -5,6 +5,9 @@
 *.so
 *.dylib
 
+homework-1/.vscode/launch.json
+homework-1/__debug_bin
+
 # Test binary, build with `go test -c`
 *.test
 
