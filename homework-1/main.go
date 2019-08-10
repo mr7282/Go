@@ -5,14 +5,12 @@ import (
 )
 
 func main() {
-
-	rate := 64
-	summ := 0
 	howMuch := 0
+	rate := 64
 
-	fmt.Println("Hi! Hom much you change money?")
+	fmt.Println("Сколько хотите поменять $?")
 	fmt.Scanln(&howMuch)
-	summ = howMuch * rate
-	fmt.Println("Сумма на руки- ", summ)
+	howMuch = howMuch * rate
+	fmt.Println("Сумма к выдаче- ", howMuch)
 
 }
