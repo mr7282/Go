@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package queue
 
 var x []string
 
@@ -24,16 +20,4 @@ func Pop() string {
 		x[i] = x[i+1]
 	}
 	return popElem
-}
-
-//Pushstack of
-func Pushstack() {
-
-	Push("1")
-	Push("2")
-	Push("3")
-	Push("4")
-	Push("5")
-	fmt.Println(x)
-
 }
