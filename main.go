@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"./queue"
 )
 
 //Car of struct
@@ -58,7 +60,7 @@ var MAZ = Truck{
 func main() {
 
 	//* Реализовать очередь. Это структура данных, работающая по принципу FIFO (First Input — first output, или «первым зашел — первым вышел»).
-	/*queue.Push("1")
+	queue.Push("1")
 	queue.Push("2")
 	queue.Push("3")
 	queue.Push("4")
@@ -66,10 +68,12 @@ func main() {
 	fmt.Println(queue.Pop())
 	fmt.Println(queue.Pop())
 	fmt.Println(queue.Pop())
-	fmt.Println(queue.Pop())*/
+	fmt.Println(queue.Pop())
+	fmt.Println(queue.Pop())
+	fmt.Println(queue.Pop())
+	fmt.Println(queue.Pop())
+	fmt.Println(queue.Pop())
 
 	fmt.Println("Марка:", VAZ2106.Brand, "\nМодель:", VAZ2106.Model, "\nVIN:", VAZ2106.Vin, "\nГод:", VAZ2106.Year, "\nОбъем багажника:", VAZ2106.TrankVolume, "л", "\nСостояние двигателя:", VAZ2106.Engine, "\nОкна:", VAZ2106.Windows, "\nОбъем топливного бака:", VAZ2106.FuelTank, "л")
 	fmt.Println("\n\nМарка:", MAZ.general.Brand, "\nМодель:", MAZ.general.Model, "\nVIN:", MAZ.general.Vin, "\nГод:", MAZ.general.Year, "\nОбъем багажника:", MAZ.general.TrankVolume, "л", "\nСостояние двигателя:", MAZ.general.Engine, "\nОкна:", MAZ.general.Windows, "\nОбъем топливного бака:", MAZ.general.FuelTank, "л", "\nГрузоподъемность:", MAZ.carrying, "кг", "\nЗапас хода:", MAZ.cruisingRange, "км")
 }
-
-//* Внести в телефонный справочник дополнительные данные. Реализовать сохранение json-файла на диске с помощью пакета ioutil при изменении данных.*/
