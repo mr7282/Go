@@ -2,10 +2,16 @@ package main
 
 import (
 	"fmt"
+
+	"./triangle"
 )
 
 func main() {
-	fmt.Println("Крайне извиняюсь. Не успел сделать ДЗ. Обещаю в следующий раз сдать всё сразу")
-	fmt.Println("Заранее спасибо!")
+	var t triangle.Triangle
+	//Написать свой интерфейс и создать несколько структур, удовлетворяющих ему.
 
+	t.SetCatet(14, 21)
+	t.SetAltitude(10)
+	fmt.Println(t.GetCatet())
+	fmt.Println(t.Area())
 }
