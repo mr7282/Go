@@ -18,5 +18,6 @@ func main() {
 	tz.SetBasis()
 	tz.SetAltitude()
 	tz.GetBasis()
-	fmt.Println
+	fmt.Println("Площадь трапеции =", tz.Area())
+
 }
