@@ -12,33 +12,11 @@ type Contact struct {
 	Number  string
 }
 
-func (c Contact) setContact() {
-	fmt.Println("Ввдите Фамилию:")
-	fmt.Scanln(&Surname)
-	fmt.Println("Введите Имя:")
-	fmt.Scanln(&c.Name)
-	fmt.Println("Введите название организации:")
-	fmt.Scanln(&c.Company)
-	fmt.Println("Введите телефонный номер:")
-	fmt.Scanln(&c.Number)
-}
-
-func main() {
-	var TelephoneBook []Contact
-
-	for i := 0; i < 3; i++ {
-		TelephoneBook = append(TelephoneBook, c.setContact)
-	}
-
-	fmt.Println(TelephoneBook)
-}
-
-/*
 //TelephoneBook - массив с контактами
 var TelephoneBook []Contact
 
 //C - переменная структуры контакта
-var C Contact
+var c Contact
 
 //Action - переменная значения выбора
 var Action string
@@ -49,130 +27,57 @@ var Surname string
 //Find -переменная фамилии для поиска в карте
 var Find string
 
-// WriteIn - добавление контакта в телефонную книгу
-func (c *Contact) WriteIn() {
+//i - итеррирование
+var i int
 
+// setContact - добавление контакта в телефонную книгу
+func (c *Contact) setContact() {
 	fmt.Println("Ввдите Фамилию:")
-	fmt.Scanln(&Surname)
+	fmt.Scanln(&c.Surname)
 	fmt.Println("Введите Имя:")
 	fmt.Scanln(&c.Name)
 	fmt.Println("Введите название организации:")
 	fmt.Scanln(&c.Company)
 	fmt.Println("Введите телефонный номер:")
 	fmt.Scanln(&c.Number)
-
 }
 
 //Options - функция задающая параметры добавления в телефонную книгу, а так же поиска в ней
 func Options() {
-	fmt.Println("Выберите действие:\n 1 - поиск контакта\n 2 - добавление нового\n 3 - Выход")
+	fmt.Println("\n\nВыберите действие:\n 1 - поиск контакта\n 2 - добавление нового\n 3 - Выход")
 	fmt.Scanln(&Action)
 	switch Action {
 	case "1":
-		FindContact(Find)
+		FindContact()
 	case "2":
-		C.WriteIn()
-		TelephoneBook[Surname] = C
-		fmt.Println(TelephoneBook)
+		c.setContact()
+		TelephoneBook = append(TelephoneBook, c)
 		Options()
 	case "3":
-		fmt.Println("Спасибо за внимание!")
+		fmt.Println("\n\nСпасибо за внимание!")
 	default:
-		fmt.Println("Неправильно заданы значения!")
+		fmt.Println("\n\nНеправильно заданы значения!")
 		Options()
 	}
 }
 
-func (c Contact) getContact()  {
-
-}
-
+//FindContact - функция поиска контактов
 func FindContact() {
-	fmt.Println("Поиск контактов\nВведите фамилию:")
+	fmt.Println("Поиск контактов\n\nВведите фамилию:")
 	fmt.Scanln(&Find)
-	for i := 0; i < len(TelephoneBook); i++ {
-		if TelephoneBook[i] == Find {
-			fmt.Println(TelephoneBook[i])
-		} else {
-			fmt.Println("Контакт отсутствует")
-		}
-	}
+	for i = 0; i < len(TelephoneBook); i++ {
 
-}
-
-func main() {
-	TelephoneBook = make([]Contact)
-	Options()
-
-}
-
-/* Записная книга через карты
-// Contact - телефонная книга
-type Contact struct {
-	Surname string
-	Name    string
-	Company string
-	Number  string
-}
-
-//TelephoneBook - массив с контактами
-var TelephoneBook map[string]Contact
-
-//C - переменная структуры контакта
-var C Contact
-
-//Action - переменная значения выбора
-var Action string
-
-//Surname - переменная фамилии
-var Surname string
-
-//Find -переменная фамилии для поиска в карте
-var Find string
-
-// WriteIn - добавление контакта в телефонную книгу
-func (c *Contact) WriteIn() {
-
-	c.Surname = Surname
-	fmt.Println("Введите Имя:")
-	fmt.Scanln(&c.Name)
-	fmt.Println("Введите название организации:")
-	fmt.Scanln(&c.Company)
-	fmt.Println("Введите телефонный номер:")
-	fmt.Scanln(&c.Number)
-
-}
-
-//Options - функция задающая параметры добавления в телефонную книгу, а так же поиска в ней
-func Options() {
-	fmt.Println("Выберите действие:\n 1 - поиск контакта\n 2 - добавление нового\n 3 - Выход")
-	fmt.Scanln(&Action)
-	if Action == "1" {
-		fmt.Println("Поиск контактов\nВведите фамилию:")
-		fmt.Scanln(&Find)
-		fmt.Println(TelephoneBook[Find])
-		Options()
-	} else {
-		if Action == "2" {
-			fmt.Println("Ввдите Фамилию:")
-			fmt.Scanln(&Surname)
-			C.WriteIn()
-			TelephoneBook[Surname] = C
-			fmt.Println(TelephoneBook)
+		if TelephoneBook[i].Surname == Find {
+			fmt.Println("\n\n\n\nФамилия:", TelephoneBook[i].Surname, "\nИмя:", TelephoneBook[i].Name, "\nНазвание организации:", TelephoneBook[i].Company, "\nТелефонный номер:", TelephoneBook[i].Number)
 			Options()
-		} else {
-			if Action == "3" {
-				fmt.Println("Спасибо за внимание!")
-			} else {
-				fmt.Println("Неправильно заданы значения!")
-				Options()
-			}
 		}
 	}
+	fmt.Println("\n\nКонтакт отсутствует")
+	Options()
 }
 
 func main() {
-	TelephoneBook = make(map[string]Contact)
+	TelephoneBook = make([]Contact, 100)
 	Options()
 
-}*/
+}
