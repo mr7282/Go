@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 // Contact - телефонная книга
@@ -11,6 +12,9 @@ type Contact struct {
 	Company string
 	Number  string
 }
+
+//sortSurname - тип для сортировки по имени
+type sortSurname []Contact
 
 //TelephoneBook - массив с контактами
 var TelephoneBook []Contact
@@ -30,6 +34,21 @@ var Find string
 //i - итеррирование
 var i int
 
+//Len - ...
+func (s sortSurname) Len() int {
+	return len(s)
+}
+
+// Less -...
+func (s sortSurname) Less(i, j int) bool {
+	return s[i].Surname < s[j].Surname
+}
+
+//Swap - ...
+func (s sortSurname) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+
 // setContact - добавление контакта в телефонную книгу
 func (c *Contact) setContact() {
 	fmt.Println("Ввдите Фамилию:")
@@ -44,7 +63,7 @@ func (c *Contact) setContact() {
 
 //Options - функция задающая параметры добавления в телефонную книгу, а так же поиска в ней
 func Options() {
-	fmt.Println("\n\nВыберите действие:\n 1 - поиск контакта\n 2 - добавление нового\n 3 - Выход")
+	fmt.Println("\n\nВыберите действие:\n 1 - поиск контакта\n 2 - добавление нового\n 3 - Показать весь список контактов\n 4 - Выход")
 	fmt.Scanln(&Action)
 	switch Action {
 	case "1":
@@ -52,8 +71,14 @@ func Options() {
 	case "2":
 		c.setContact()
 		TelephoneBook = append(TelephoneBook, c)
+		sort.Sort(sortSurname(TelephoneBook))
 		Options()
 	case "3":
+		for k := 0; k < len(TelephoneBook); k++ {
+			fmt.Println("\nНомер контакта:", k+1, "\nФамилия:", TelephoneBook[k].Surname, "\nИмя:", TelephoneBook[k].Name, "\nНазвание организации:", TelephoneBook[k].Company, "\nТелефонный номер:", TelephoneBook[k].Number)
+		}
+		Options()
+	case "4":
 		fmt.Println("\n\nСпасибо за внимание!")
 	default:
 		fmt.Println("\n\nНеправильно заданы значения!")
@@ -77,7 +102,7 @@ func FindContact() {
 }
 
 func main() {
-	TelephoneBook = make([]Contact, 100)
+
 	Options()
 
 }
