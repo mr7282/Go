@@ -13,7 +13,7 @@ type Contact struct {
 	Number  string
 }
 
-//sortSurname - тип для сортировки по имени
+//sortSurname - тип для сортировки по фамилии
 type sortSurname []Contact
 
 //TelephoneBook - массив с контактами
@@ -30,9 +30,6 @@ var Surname string
 
 //Find -переменная фамилии для поиска в карте
 var Find string
-
-//i - итеррирование
-var i int
 
 //Len - ...
 func (s sortSurname) Len() int {
@@ -90,7 +87,7 @@ func Options() {
 func FindContact() {
 	fmt.Println("Поиск контактов\n\nВведите фамилию:")
 	fmt.Scanln(&Find)
-	for i = 0; i < len(TelephoneBook); i++ {
+	for i := 0; i < len(TelephoneBook); i++ {
 
 		if TelephoneBook[i].Surname == Find {
 			fmt.Println("\n\n\n\nФамилия:", TelephoneBook[i].Surname, "\nИмя:", TelephoneBook[i].Name, "\nНазвание организации:", TelephoneBook[i].Company, "\nТелефонный номер:", TelephoneBook[i].Number)
