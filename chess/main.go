@@ -28,11 +28,11 @@ type PositionMove struct {
 //PM - переменная структуры вариантов хода
 var vpm PositionMove
 
-//PositionOption - возвращаемый массив координат хода коня
-var PositionOption []PositionMove
-
 //Range - преобразованный шахматный ряд
 var Range []string
+
+//X - переменная для преобразования
+var X string
 
 //GetPosition - ввод коорлинат первоначального нахождения коня
 func (p *Position) GetPosition() {
@@ -46,7 +46,7 @@ func (p *Position) GetPosition() {
 func (pm PositionMove) ChessMove() {
 	if vp.x <= 7 && vp.x >= 1 && vp.y <= 6 && vp.y >= 1 {
 		vpm.pm1 = Position{x: vp.x + 1, y: vp.y + 2}
-
+		X = vpm.pm1.x + 10
 	} else {
 		vpm.pm1 = Position{x: 0, y: 0}
 	}
@@ -103,15 +103,42 @@ func (pm PositionMove) ChessMove() {
 }
 
 //converting - преобразование массива в шахматный ряд
-func converting() {
+/*func converting() {
 
-}
+	for _, X := range vpm {
+
+		switch pm1.x {
+		case 0:
+			x = "0" + pm1.y
+		case 1:
+			x = "a" + pm1.y
+		case 2:
+			x = "b" + pm1.y
+		case 3:
+			x = "c" + pm1.y
+		case 4:
+			x = "d" + pm1.y
+		case 5:
+			x = "e" + pm1.y
+		case 6:
+			x = "f" + pm1.y
+		case 7:
+			x = "g" + pm1.y
+		case 8:
+			x = "h" + pm1.y
+		}
+	}
+
+
+		Range = append(Range, x)
+	}
+}*/
 
 func main() {
 
 	vp.GetPosition()
 	vpm.ChessMove()
-	PositionOption = append(PositionOption, vpm)
-	fmt.Println(PositionOption)
+	//converting()
+	fmt.Println(vpm, X)
 
 }
