@@ -11,11 +11,9 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-/queue
-/.vscode
-<<<<<<< HEAD
-readme.md
 
-=======
-readme.md
->>>>>>> origin/homework-4
+queue/
+.vscode/
+README.md
+
+//

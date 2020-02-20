@@ -11,7 +11,8 @@
             "mode": "auto",
             "program": "${fileDirname}",
             "env": {},
-            "args": []
+            "args": ["test4.txt","test1.txt","test3.txt","test2.txt"]
+
         }
     ]
 }
