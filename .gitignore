@@ -15,5 +15,6 @@
 queue/
 .vscode/
 README.md
+__debug_bin
 
 //
