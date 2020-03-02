@@ -10,11 +10,15 @@ import (
 func main() {
 	telephoneBook := make(map[string]int)
 	content, err := ioutil.ReadFile("telephoneBook.json")
-	if content != nil {
-		telephoneBookJSON := json.Unmarshal(content)
-
+	if err != nil {
+		fmt.Println(err)
 	}
-	telephoneBook = telephoneBookJSON
+	if content != nil {
+		err := json.Unmarshal(content, &telephoneBook)
+		if err != nil {
+			fmt.Println("Что то пошло не так2")
+		}
+	}
 	for {
 		fmt.Println("Введите 1 если необходимо добавить контакт\nВведите 2 если необходимо вывести телефонную книгу целиком\nВведите 3 если необходимо осуществить поиск\nВведите 4 для выхода из телефонной книги")
 		var condition string
@@ -38,9 +42,9 @@ func main() {
 
 		m, err := json.Marshal(telephoneBook)
 		if err != nil {
-			fmt.Println("Что то пошло не так")
+			fmt.Println("Что то пошло не так3")
 		}
-		err := ioutil.WriteFile("telephoneBook.json", m, 0644)
+		err = ioutil.WriteFile("telephoneBook.json", m, 0644)
 
 	}
 
