@@ -20,14 +20,14 @@ func main() {
 		}
 	}
 	for {
-		fmt.Println("Введите 1 если необходимо добавить контакт\nВведите 2 если необходимо вывести телефонную книгу целиком\nВведите 3 если необходимо осуществить поиск\nВведите 4 для выхода из телефонной книги")
+		fmt.Println("Введите 1 если необходимо добавить контакт\nВведите 2 если необходимо показать телефонную книгу целиком\nВведите 3 если необходимо осуществить поиск\nВведите 4 для выхода из телефонной книги")
 		var condition string
 		fmt.Scanln(&condition)
 		switch condition {
 		case "1":
 			getNewContact(telephoneBook)
 		case "2":
-			fmt.Println(telephoneBook)
+			showTelephoneBook(telephoneBook)
 		case "3":
 			findContact(telephoneBook)
 		case "4":
@@ -39,7 +39,8 @@ func main() {
 		if condition == "4" {
 			break
 		}
-
+		
+		if 
 		m, err := json.Marshal(telephoneBook)
 		if err != nil {
 			fmt.Println("Что то пошло не так3")
@@ -81,5 +82,11 @@ func findContact(book map[string]int) {
 	fmt.Println("Введите фамилию для поиска:")
 	var surname string
 	fmt.Scanln(&surname)
-	fmt.Println(book[surname])
+	fmt.Printf("%v\n\n", book[surname])
+}
+
+func showTelephoneBook(book map[string]int) {
+	for name, number := range book {
+		fmt.Printf("%v - %v\n", name, number)
+	}
 }
