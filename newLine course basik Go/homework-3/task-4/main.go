@@ -13,12 +13,7 @@ func main() {
 	if err != nil {
 		fmt.Println("Что то пошло не так при чтении файла!")
 	}
-	if content != nil {
-		err := json.Unmarshal(content, &telephoneBook)
-		if err != nil {
-			fmt.Println("Что то пошло не так при раскодирования JSON!")
-		}
-	}
+
 	for {
 		fmt.Println("Введите 1 если необходимо добавить контакт\nВведите 2 если необходимо показать телефонную книгу целиком\nВведите 3 если необходимо осуществить поиск\nВведите 4 для выхода из телефонной книги")
 		var condition string
