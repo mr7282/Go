@@ -17,28 +17,44 @@ type point struct {
 type nextPoint point
 
 func (p point) getPoint() point {
-	getPoint := p
+	userPoint := p
 	positionHorse := ""
-	fmt.Println("Введите позицию коня")
-	fmt.Scanln(&positionHorse)
-	getPoint.x, getPoint.y = convert(positionHorse)
-	return getPoint
+
+	for {
+		fmt.Println("Введите позицию коня")
+		fmt.Scanln(&positionHorse)
+		userPoint.x, userPoint.y = int(positionHorse[0]), int(positionHorse[1])
+		if userPoint.y > 48 && userPoint.y < 57 && userPoint.x > 96 && userPoint.x < 105 {
+			break
+		} else {
+			fmt.Printf("Введена неправильная позиция. Попробуй еще раз!\n\n")
+		}
+	}
+	return userPoint
 }
 
-func convert(data string) (x, y int) {
-	firstSymbol := string(data[0])
-	secondSymbol := int(data[1])
-	number := 0
-	switch firstSymbol {
-	case "a":
-		return 
-
+func (p point) allowedMoveHorse() {
+	move := []point{
+		{p.x + 1, p.y + 2},
+		{p.x + 2, p.y + 1},
+		{p.x + 2, p.y - 1},
+		{p.x + 1, p.y - 2},
+		{p.x - 1, p.y - 2},
+		{p.x - 2, p.y - 1},
+		{p.x - 2, p.y + 1},
+		{p.x - 1, p.y + 2},
 	}
-	fmt.Println(firstSymbol)
-	return firstSymbol, secondSymbol
+
+	for _, show := range move {
+		if show.y > 48 && show.y < 57 && show.x > 96 && show.x < 105 {
+			fmt.Println(string(show.x) + string(show.y))
+		}
+	}
 }
 
 func main() {
 	myPoint := point{}
-	fmt.Println(myPoint.getPoint())
+	myPoint = myPoint.getPoint()
+	myPoint.allowedMoveHorse()
+
 }
