@@ -7,19 +7,19 @@ import (
 // Пользователь вводит сумму вклада в банк и годовой процент. Найти сумму вклада через 5 лет.
 //  *** Добавил возможность указывать длительность периода вклада самостоятельно.
 func main() {
-	fmt.Printf("Сумма влада через указанный период составит %v", getTotal(getSum(), getPercent(), getDuration()))
+	fmt.Printf("Сумма вклада через указанный период составит %v", getTotal(getSum(), getPercent(), getDuration()))
 }
 
-func getSum() int64 {
+func getSum() float64 {
 	fmt.Println("Введите желаемую сумму вклада:")
-	var sum int64
+	var sum float64
 	fmt.Scanln(&sum)
 	return sum
 }
 
-func getPercent() int {
+func getPercent() float64 {
 	fmt.Println("Введите желаемый процент:")
-	var percent int
+	var percent float64
 	fmt.Scanln(&percent)
 	return percent
 }
@@ -31,10 +31,10 @@ func getDuration() int {
 	return duration
 }
 
-func getTotal(sum int64, percent int, duration int) int64 {
-	var total int64 = int64(sum)
+func getTotal(sum float64, percent float64, duration int) float64 {
+	var total float64 = sum
 	for i := 0; i < duration; i++ {
-		total = total + ((total * int64(percent)) / 100)
+		total = total + ((total * percent) / 100)
 	}
 	return total
 }

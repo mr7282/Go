@@ -18,7 +18,8 @@ func main() {
 	defer openDir.Close()
 
 	filepath.Walk(innnerPath, func(path string, info os.FileInfo, err error) error {
-		fmt.Println(path)
+		outinfo := info.a
+		fmt.Println()
 		return nil
 	})
 
