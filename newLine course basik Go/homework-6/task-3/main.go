@@ -28,10 +28,10 @@ func showName(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
+	conf := configuration.Config()
 
 	route := http.NewServeMux()
 	route.HandleFunc("/", showName)
 
-	logrus.Fatalln(http.ListenAndServe(configuration.Config().ADDRESS, route))
+	logrus.Fatalln(http.ListenAndServe(conf.ADDRESS, route))
 }
